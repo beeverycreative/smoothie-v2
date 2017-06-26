@@ -62,7 +62,8 @@ Rake.application.add_loader('d', DfileLoader.new)
 
 ARMVERSION = ENV['ARMVERSION'].nil? ? '6.3.1' :  ENV['ARMVERSION']
 #TOOLSDIR = '/home/morris/work/reprap/Smoothie/gcc-arm-none-eabi/bin'
-TOOLSDIR = ENV['ARMTOOLS'].nil? ? '/usr/bin' :  ENV['ARMTOOLS']
+#TOOLSDIR = ENV['ARMTOOLS'].nil? ? '/usr/bin' :  ENV['ARMTOOLS']
+TOOLSDIR = '/Users/marcosgomes/git/smoothie-v2/gcc-arm-none-eabi_6/bin'
 TOOLSBIN = "#{TOOLSDIR}/arm-none-eabi-"
 LIBSDIR = "#{TOOLSDIR}/../lib"
 CC = "#{TOOLSBIN}gcc"
@@ -120,7 +121,7 @@ if TESTING
 
 else
   src = FileList['src/**/*.{c,cpp,s}']
-  #src.exclude(/src\/libs\/longjmp.s/) # we don't want this unless unit testing
+  src.exclude(/src\/libs\/longjmp.s/) # we don't want this unless unit testing
   SRC = src
   puts "Building Firmware"
 end
